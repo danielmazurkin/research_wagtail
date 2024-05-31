@@ -21,6 +21,7 @@ from wagtail import urls as wagtail_urls
 from wagtail.documents import urls as wagtaildocs_urls
 from django.conf import settings
 from django.conf.urls.static import static
+from info.urls import api_router
 
 
 urlpatterns = [
@@ -28,5 +29,9 @@ urlpatterns = [
     path('cms/', include(wagtailadmin_urls)),
     path('documents/', include(wagtaildocs_urls)),
     path('pages/', include(wagtail_urls)),
+    path('api/v2/', api_router.urls),
+    # Важно, чтобы обращение к API было раньше, чем wagtail_urls
+    path(r'', include(wagtail_urls)),
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
