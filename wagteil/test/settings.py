@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'modelcluster',
     'taggit',
     'wagtailcharts',
+    'customadmin',
     'info',
 ]
 
@@ -85,7 +86,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR, 'templates'),
+            os.path.join(BASE_DIR, 'customadmin', 'templates'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {

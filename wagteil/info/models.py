@@ -1,8 +1,9 @@
 from django.db.models import IntegerField, CharField
 from wagtail.models import Page
-from wagtail.fields import StreamField
+from wagtail.fields import StreamField, StreamBlock
 from wagtail.admin.panels import FieldPanel
 from wagtail.contrib.table_block.blocks import TableBlock
+from wagtailcharts.blocks import ChartBlock
 
 
 class Tariff(Page):
@@ -40,3 +41,20 @@ class TablePage(Page):
         verbose_name = 'Таблица по тарифам'
         verbose_name_plural = 'Таблица по тарифам'
 
+
+class ContentBlocks(StreamBlock):
+    chart_block = ChartBlock()
+
+
+class Chart(Page):
+    chart_data = StreamField([
+        ('chart', ContentBlocks()),
+    ], null=True, blank=True, use_json_field=True)
+
+    content_panels = Page.content_panels + [
+        FieldPanel('chart_data'),
+    ]
+
+    class Meta:
+        verbose_name = 'График'
+        verbose_name_plural = 'Графики'
