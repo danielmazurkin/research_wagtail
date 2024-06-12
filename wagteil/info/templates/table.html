@@ -1,0 +1,9 @@
+{% load wagtailcore_tags %}
+
+{% for block in page.table %}
+    {% if block.block_type == 'table' %}
+        {% include_block block %}
+    {% else %}
+        {# rendering for other block types #}
+    {% endif %}
+{% endfor %}

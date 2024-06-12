@@ -27,6 +27,8 @@ class TableBlockCustom(TableBlock):
 
 
 class TablePage(Page):
+    template = 'table.html'
+
     table = StreamField([
         ('table', TableBlockCustom()),
     ], null=True, blank=True, use_json_field=True)
@@ -47,6 +49,9 @@ class ContentBlocks(StreamBlock):
 
 
 class Chart(Page):
+
+    template = 'chart.html'
+
     chart_data = StreamField([
         ('chart', ContentBlocks()),
     ], null=True, blank=True, use_json_field=True)
