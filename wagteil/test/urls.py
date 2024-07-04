@@ -23,7 +23,6 @@ from django.conf import settings
 from django.conf.urls.static import static
 from info.urls import api_router
 
-
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('cms/', include(wagtailadmin_urls)),
@@ -32,6 +31,5 @@ urlpatterns = [
     path('api/v2/', api_router.urls),
     # Важно, чтобы обращение к API было раньше, чем wagtail_urls
     path(r'', include(wagtail_urls)),
-
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

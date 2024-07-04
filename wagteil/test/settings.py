@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework',
+    'wagtail',
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
     'wagtail.embeds',
@@ -50,15 +50,45 @@ INSTALLED_APPS = [
     'wagtail.images',
     'wagtail.search',
     'wagtail.admin',
-    'wagtail.api.v2',
-    'wagtail',
+    "wagtailmedia",
+    "wagtail.api.v2",
     "wagtail.contrib.table_block",
-    'modelcluster',
-    'taggit',
-    'wagtailcharts',
-    'customadmin',
-    'info',
+    "taggit",
+    "rest_framework",
+    "wagtailcharts",
+    "modelcluster",
+    "customadmin",
+    'wagtailvideos',
+    "videos",
+    "info"
 ]
+
+WAGTAILMEDIA = {
+    "MEDIA_MODEL": "wagtailmedia.Media",  # string, dotted-notation.
+    "MEDIA_FORM_BASE": "",  # string, dotted-notation. Defaults to an empty string
+    "AUDIO_EXTENSIONS": [
+        "aac",
+        "aiff",
+        "flac",
+        "m4a",
+        "m4b",
+        "mp3",
+        "ogg",
+        "wav",
+    ],  # list of extensions
+    "VIDEO_EXTENSIONS": [
+        "avi",
+        "h264",
+        "m4v",
+        "mkv",
+        "mov",
+        "mp4",
+        "mpeg",
+        "mpg",
+        "ogv",
+        "webm",
+    ],  # list of extensions
+}
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 

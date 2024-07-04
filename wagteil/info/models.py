@@ -1,9 +1,9 @@
 from django.db.models import IntegerField, CharField
-from wagtail.models import Page
 from wagtail.fields import StreamField, StreamBlock
-from wagtail.admin.panels import FieldPanel
 from wagtail.contrib.table_block.blocks import TableBlock
 from wagtailcharts.blocks import ChartBlock
+from wagtail.admin.panels import FieldPanel
+from wagtail.models import Page
 
 
 class Tariff(Page):
