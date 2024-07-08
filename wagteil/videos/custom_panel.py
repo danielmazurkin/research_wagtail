@@ -153,7 +153,9 @@ class VideoChooserCustomPanel(VideoChooserPanel):
 
         def get_context_data(self, parent_context=None):
             context = super().get_context_data(parent_context)
-            context['video_url'] = context['self'].instance.header_video.file.url
+
+            if hasattr(context['self'], 'instance') and context['self'].instance.header_video is not None:
+                context['video_url'] = context['self'].instance.header_video.file.url
             if self.read_only:
                 context.update(self.get_read_only_context_data())
             else:

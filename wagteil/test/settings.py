@@ -29,7 +29,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+SITE_ID = 1
 
+
+LOGIN_REDIRECT_URL = '/choose/role'
 # Application definition
 
 INSTALLED_APPS = [
@@ -39,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'wagtail',
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
@@ -53,6 +57,7 @@ INSTALLED_APPS = [
     "wagtailmedia",
     "wagtail.api.v2",
     "wagtail.contrib.table_block",
+    "users",
     "taggit",
     "rest_framework",
     "wagtailcharts",
@@ -60,8 +65,10 @@ INSTALLED_APPS = [
     "customadmin",
     'wagtailvideos',
     "videos",
-    "info"
+    "info",
 ]
+
+AUTH_USER_MODEL = "users.CustomUser"
 
 WAGTAILMEDIA = {
     "MEDIA_MODEL": "wagtailmedia.Media",  # string, dotted-notation.
@@ -103,6 +110,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'users.middleware.UserRoleMiddleware'
 ]
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

@@ -4,7 +4,6 @@ from django.utils.html import format_html, format_html_join
 from wagtail import blocks
 from wagtail.admin.panels import FieldPanel
 from wagtail.fields import StreamField
-from wagtail.models import Page
 from wagtailmedia.blocks import AbstractMediaChooserBlock
 from wagtail.fields import RichTextField
 from wagtail.models import Page

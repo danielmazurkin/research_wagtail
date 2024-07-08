@@ -1,6 +1,8 @@
 {% load wagtailadmin_tags i18n wagtailvideos_tags %}
+{% if video_url %}
 <video src="{{video_url}}"
                     width="480" height="360" controls>
                     The browser does not support videos.
                 </video>
+{% endif %}
 {% include "wagtailadmin/shared/field.html" with show_label=False help_text=self.help_text %}
