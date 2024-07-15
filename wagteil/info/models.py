@@ -2,9 +2,10 @@ from django.db.models import IntegerField, CharField
 from django.shortcuts import render
 from wagtail.fields import StreamField, StreamBlock
 from wagtail.contrib.table_block.blocks import TableBlock
+from wagtail.utils.decorators import cached_classmethod
 from wagtailcharts.blocks import ChartBlock
-from wagtail.admin.panels import FieldPanel
-from wagtail.models import Page
+from wagtail.admin.panels import FieldPanel, ObjectList, TabbedInterface, PanelGroup
+from wagtail.models import Page, PreviewableMixin
 from users.choices import ROLE_USER
 
 
@@ -71,3 +72,16 @@ class Chart(Page):
     class Meta:
         verbose_name = 'График'
         verbose_name_plural = 'Графики'
+
+
+class ObjectListCustomContent(PanelGroup):
+    class BoundPanel(PanelGroup.BoundPanel):
+        template_name = "wagtailadmin/custom_list.html"
+
+
+class PivotTableTariff(Page, PreviewableMixin):
+    edit_view_template_custom = "wagtailadmin/tariffs_shows.html"
+
+    class Meta:
+        verbose_name = "Сводная таблица по тарифам"
+        verbose_name_plural = "Сводная таблица по тарифам"

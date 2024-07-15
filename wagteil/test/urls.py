@@ -25,12 +25,14 @@ from django.conf.urls.static import static
 from info.urls import api_router
 from users.views import LoginViewCustom
 from info.views import InfoPageViewCustom
+from info.views import CustomPageEditCustom
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("cms/login/", LoginViewCustom.as_view(), name="wagtailadmin_login"),
     path("cms/pages/<int:parent_page_id>/", InfoPageViewCustom.as_view(), name=""),
+    path("cms/pages/<int:page_id>/edit/", CustomPageEditCustom.as_view(), name=""),
     path('cms/', include(wagtailadmin_urls)),
     path('documents/', include(wagtaildocs_urls)),
     path('pages/', include(wagtail_urls)),

@@ -1,0 +1,12 @@
+{% extends "wagtailadmin/base.html" %}
+
+{% block branding_logo %}
+    <img src="https://portal.ic-group.ru/wp-content/themes/hrportal/img/logo.svg" alt="Custom Project" width="80" />
+{% endblock %}
+
+{% block content %}
+    <h1> Проверка </h1>
+    {% for tariff in tariffs %}
+        <h1> {{ tariff.name }} </h1>
+    {% endfor %}
+{% endblock %}
